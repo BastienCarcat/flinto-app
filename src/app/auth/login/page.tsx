@@ -6,14 +6,11 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/primitives/cards";
-import { Button } from "@/components/ui/buttons/button";
-import { Label } from "@radix-ui/react-label";
-import { Input } from "@/components/ui/inputs/input";
-import { login } from "./actions";
+} from "@/components/ui/cards";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "./validation";
 import { toast } from "sonner";
 import {
   Form,
@@ -24,6 +21,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { loginSchema } from "../_schemas/login.schema";
+import { login } from "../_actions/login.action";
 
 export default function LoginPage() {
   const {

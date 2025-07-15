@@ -1,18 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/buttons/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/primitives/cards";
-import { Input } from "@/components/ui/inputs/input";
-import { signup } from "./actions";
+} from "@/components/ui/cards";
+import { Input } from "@/components/ui/input";
+import { signup } from "../_actions/signup.action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { signupSchema } from "./validation";
+import { signupSchema } from "../_schemas/signup.schema";
 import {
   Form,
   FormControl,

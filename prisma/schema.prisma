@@ -15,45 +15,45 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(uuid()) 
-  supabaseId   String  @unique // Must match Supabase Auth ID
-  email         String  @unique
-  name          String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  deletedAt DateTime? 
+  id         String    @id @default(uuid())
+  supabaseId String    @unique // Must match Supabase Auth ID
+  email      String    @unique
+  name       String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
 
   // Relations
-  clients       Client[]
-  projects      Project[]
+  clients  Client[]
+  projects Project[]
 }
 
 model Client {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String
   email     String
   company   String?
   userId    String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  deletedAt DateTime? 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 
   // Relations
-  user      User     @relation(fields: [userId], references: [id])
-  projects  Project[]
+  user     User      @relation(fields: [userId], references: [id])
+  projects Project[]
 }
 
 model Project {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   description String?
   clientId    String
   userId      String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  deletedAt DateTime? 
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
 
   // Relations
-  client      Client   @relation(fields: [clientId], references: [id])
-  user        User     @relation(fields: [userId], references: [id])
+  client Client @relation(fields: [clientId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 }

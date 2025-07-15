@@ -1,10 +1,10 @@
 "use server";
 
-import { actionClient, ActionError } from "@/utils/nextSafeAction/client";
-import { createClient } from "@/utils/supabase/server";
+import { actionClient, ActionError } from "@/lib/nextSafeAction/client";
+import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { signupSchema } from "./validation";
+import { signupSchema } from "../_schemas/signup.schema";
 
 export const signup = actionClient
   .inputSchema(signupSchema)
@@ -17,5 +17,5 @@ export const signup = actionClient
     }
 
     revalidatePath("/", "layout");
-    redirect("/");
+    redirect("/dashboard");
   });
